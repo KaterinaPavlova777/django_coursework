@@ -10,6 +10,30 @@ from .forms import CustomUserCreationForm
 from .models import CustomUser
 from django.http import HttpResponseForbidden
 
+from django.views.generic import DetailView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import CustomUser
+from .forms import CustomUserCreationForm
+
+
+class ProfileView(LoginRequiredMixin, DetailView):
+    model = CustomUser
+    template_name = 'users/profile.html'
+    context_object_name = 'user'
+
+    def get_object(self):
+        return self.request.user
+
+
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = CustomUser
+    form_class = CustomUserCreationForm
+    template_name = 'users/profile_edit.html'
+    success_url = reverse_lazy('users:profile')
+
+    def get_object(self):
+        return self.request.user
+
 
 class UserListView(LoginRequiredMixin, ListView):
     model = CustomUser

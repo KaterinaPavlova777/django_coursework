@@ -9,8 +9,10 @@ click==8.1.8
 click-didyoumean==0.3.1
 click-plugins==1.1.1
 click-repl==0.3.0
+crispy-bootstrap5==2023.10
 Django==5.1.7
 django-celery==3.1.17
+django-crispy-forms==2.1
 django-mailing==0.2.4
 dotenv==0.9.9
 Flask==3.1.0
@@ -18,7 +20,9 @@ itsdangerous==2.2.0
 Jinja2==3.1.6
 kombu==5.4.2
 legacy==0.1.7
+load-dotenv==0.1.0
 MarkupSafe==3.0.2
+Pillow==11.1.0
 pillow==11.1.0
 prompt_toolkit==3.0.50
 python-dateutil==2.9.0.post0
