@@ -16,11 +16,41 @@
 </head>
 
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'mailing:index' %}">Сервис управления рассылками</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'mailing:index' %}">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'mailing:recipient_list' %}">Получатели рассылки</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'mailing:message_list' %}">Рассылаемые сообщения</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'mailing:mailing_list' %}">Управление рассылками</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'mailing:mailingattempt_list' %}">Информация о рассылках</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:profile' %}">Профиль</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="container-fluid">
     <div class="row">
-        {% include 'includes/menu.html' %}
-
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <main class="col-md-12 px-md-4">
             {% block content %}{% endblock %}
             {% block content_2 %}{% endblock %}
         </main>
