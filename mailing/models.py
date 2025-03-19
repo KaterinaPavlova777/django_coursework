@@ -39,6 +39,10 @@ class Message(models.Model):
         ordering = ['id']
 
 
+def default_finish_send_at():
+    return datetime.now() + timedelta(days=1)
+
+
 class Mailing(models.Model):
     """Модель рассылок"""
 
@@ -52,9 +56,15 @@ class Mailing(models.Model):
         (RUNNING, 'Запущена'),
     ]
 
-    first_send_at = models.DateTimeField(default=datetime.now(), verbose_name="Дата и время первой отправки")
-    finish_send_at = models.DateTimeField(default=datetime.now() + timedelta(days=1),
-                                          verbose_name="Дата и время окончания отправки", )
+    first_send_at = models.DateTimeField(
+        default=datetime.now,
+        verbose_name="Дата и время первой отправки"
+    )
+
+    finish_send_at = models.DateTimeField(
+        default=default_finish_send_at,
+        verbose_name="Дата и время окончания отправки"
+    )
     status = models.CharField(max_length=9, choices=STATUS_CHOICES, verbose_name='Статус рассылки')
     owner = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True,
                               related_name='mailing_owner',
